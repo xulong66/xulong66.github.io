@@ -8,7 +8,7 @@ export function createSiteMetadata(siteOrigin?: string): Metadata {
 
   return {
     ...(metadataBase ? { metadataBase } : {}),
-    title: 'Long Xu (徐龙) · Academic Homepage',
+    title: 'Long Xu · Academic Homepage',
     description:
       'Long Xu is a Ph.D. candidate at Sun Yat-sen University researching edge intelligence, computation offloading, and wireless systems.',
     authors: [{ name: 'Long Xu' }],
@@ -22,7 +22,7 @@ export function createSiteMetadata(siteOrigin?: string): Metadata {
     ],
     openGraph: {
       type: 'website',
-      title: 'Long Xu (徐龙) · Academic Homepage',
+      title: 'Long Xu · Academic Homepage',
       description:
         'Research in edge intelligence, computation offloading, and wireless systems.',
       siteName: 'Long Xu · Academic Homepage',
@@ -37,7 +37,7 @@ export function createSiteMetadata(siteOrigin?: string): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Long Xu (徐龙) · Academic Homepage',
+      title: 'Long Xu · Academic Homepage',
       description:
         'Research in edge intelligence, computation offloading, and wireless systems.',
       images: ['/og.png'],

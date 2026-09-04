@@ -21,6 +21,7 @@ test('GitHub Pages has a root static build with the canonical public URL', () =>
     html,
     /property="og:image" content="https:\/\/xulong66\.github\.io\/og\.png"/,
   );
+  assert.doesNotMatch(html, /徐龙/);
   assert.doesNotMatch(html, /localhost|127\.0\.0\.1/i);
   assert.ok(existsSync(new URL('../public/.nojekyll', import.meta.url)));
 });

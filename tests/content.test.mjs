@@ -8,7 +8,7 @@ test("profile content contains the approved identity and links", async () => {
   const content = JSON.parse(await readFile(contentPath, "utf8"));
 
   assert.equal(content.profile.name, "Long Xu");
-  assert.equal(content.profile.chineseName, "徐龙");
+  assert.equal("chineseName" in content.profile, false);
   assert.equal(content.profile.email, "xulongbao6@gmail.com");
   assert.equal(content.profile.affiliation, "Sun Yat-sen University");
   assert.equal(content.links.github, "https://github.com/xulong66");

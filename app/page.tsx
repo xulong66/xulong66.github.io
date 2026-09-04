@@ -104,10 +104,7 @@ export default function HomePage() {
 
           <div className="hero-copy">
             <p className="eyebrow">{profile.descriptor}</p>
-            <h1 id="profile-name">
-              {profile.name}
-              <span lang="zh-Hans">{profile.chineseName}</span>
-            </h1>
+            <h1 id="profile-name">{profile.name}</h1>
 
             <p className="role">{profile.role}</p>
             <div className="affiliation">

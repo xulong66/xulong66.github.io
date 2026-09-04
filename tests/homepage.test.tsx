@@ -8,6 +8,7 @@ describe('academic homepage hero', () => {
 
     const about = screen.getByRole('region', { name: /Long Xu/i });
     expect(within(about).getByRole('heading', { level: 1, name: /Long Xu/i })).toBeVisible();
+    expect(within(about).queryByText('徐龙')).not.toBeInTheDocument();
     expect(within(about).getByText('Ph.D. Candidate')).toBeVisible();
     expect(within(about).getByText('Sun Yat-sen University')).toBeVisible();
     expect(within(about).getByText(/Edge Intelligence & Wireless Systems/i)).toBeVisible();

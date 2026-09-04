@@ -6,13 +6,13 @@ describe('homepage metadata', () => {
     expect(siteMetadata.metadataBase).toEqual(
       new URL('https://xulong66.github.io'),
     );
-    expect(siteMetadata.title).toBe('Long Xu (徐龙) · Academic Homepage');
+    expect(siteMetadata.title).toBe('Long Xu · Academic Homepage');
     expect(siteMetadata.description).toBe(
       'Long Xu is a Ph.D. candidate at Sun Yat-sen University researching edge intelligence, computation offloading, and wireless systems.',
     );
     expect(siteMetadata.openGraph).toMatchObject({
       type: 'website',
-      title: 'Long Xu (徐龙) · Academic Homepage',
+      title: 'Long Xu · Academic Homepage',
       images: [{ url: '/og.png', width: 1200, height: 630 }],
     });
     expect(siteMetadata.twitter).toMatchObject({

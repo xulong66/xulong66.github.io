@@ -1,6 +1,6 @@
 # Long Xu · Academic Homepage
 
-Source for [xulong66.github.io](https://xulong66.github.io/), the English academic homepage of Long Xu (徐龙).
+Source for [xulong66.github.io](https://xulong66.github.io/), the English academic homepage of Long Xu.
 
 ## Local development
 
