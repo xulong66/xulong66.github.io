@@ -1075,3 +1075,124 @@ figcaption span {
     overflow-wrap: anywhere;
   }
 }
+
+
+.teaching-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.teaching-card {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.65rem;
+  border: 1px solid var(--line);
+  border-radius: 1.15rem;
+  background: rgb(255 253 248 / 76%);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.teaching-card:hover {
+  border-color: color-mix(in srgb, var(--blue) 42%, var(--line));
+  box-shadow: 0 14px 36px rgb(26 47 72 / 8%);
+  transform: translateY(-2px);
+}
+
+.teaching-period {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--gold);
+}
+
+.teaching-period time {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 760;
+  line-height: 1.45;
+}
+
+.teaching-body h3 {
+  margin: 0;
+  color: var(--blue-strong);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.teaching-body h4 {
+  margin: 0.48rem 0 0;
+  color: var(--ink);
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.teaching-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.teaching-meta span:first-child {
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 700;
+}
+
+.course-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.48rem 0.68rem;
+  border-radius: 999px;
+  color: var(--blue-strong);
+  background: var(--blue-soft);
+  font-size: 0.75rem;
+  font-weight: 790;
+  white-space: nowrap;
+}
+
+.course-link:hover {
+  color: var(--surface-raised);
+  background: var(--blue);
+}
+
+@media (prefers-color-scheme: dark) {
+  .teaching-card {
+    background: rgb(22 34 46 / 78%);
+  }
+}
+
+@media (max-width: 800px) {
+  .teaching-card {
+    grid-template-columns: 7.25rem minmax(0, 1fr);
+    gap: 0.9rem;
+    padding: 1.2rem;
+  }
+
+  .course-link {
+    grid-column: 2;
+    width: fit-content;
+  }
+}
+
+@media (max-width: 560px) {
+  .teaching-card {
+    grid-template-columns: 1fr;
+  }
+
+  .course-link {
+    grid-column: 1;
+  }
+}

@@ -8,6 +8,7 @@ import {
   Mail,
   MapPin,
   Network,
+  Presentation,
   Radio,
 } from 'lucide-react';
 import content from './data/site-content.json';
@@ -18,6 +19,7 @@ const navigation = [
   ['News', '#news'],
   ['Publications', '#publications'],
   ['Patents', '#patents'],
+  ['Teaching', '#teaching'],
   ['Education', '#education'],
   ['Contact', '#contact'],
 ] as const;
@@ -306,11 +308,52 @@ export default function HomePage() {
 
         <section
           className="content-section"
+          id="teaching"
+          aria-labelledby="teaching-heading"
+        >
+          <SectionHeading
+            index="05"
+            id="teaching-heading"
+            title="Teaching Experience"
+            note="Supporting hands-on learning in neural networks and deep learning."
+          />
+          <div className="teaching-list">
+            {content.teaching.map((item) => (
+              <article className="teaching-card" key={item.course}>
+                <div className="teaching-period">
+                  <Presentation aria-hidden="true" size={20} />
+                  <time>{item.period}</time>
+                </div>
+                <div className="teaching-body">
+                  <h3>{item.role}</h3>
+                  <h4>{item.course}</h4>
+                  <div className="teaching-meta">
+                    <span>{item.term}</span>
+                    <span>{item.school}</span>
+                    <span>Instructor: {item.instructor}</span>
+                  </div>
+                </div>
+                <a
+                  className="course-link"
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open course website: ${item.course}`}
+                >
+                  Course Website <ArrowUpRight aria-hidden="true" size={15} />
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="content-section"
           id="education"
           aria-labelledby="education-heading"
         >
           <SectionHeading
-            index="05"
+index="06"
             id="education-heading"
             title="Education"
             note="Training in communication engineering and intelligent wireless systems."
@@ -335,7 +378,7 @@ export default function HomePage() {
         >
           <div className="contact-copy">
             <p className="contact-index" aria-hidden="true">
-              06
+              07
             </p>
             <h2 id="contact-heading">Contact</h2>
             <h3>Let&apos;s talk about edge intelligence.</h3>
