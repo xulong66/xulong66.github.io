@@ -84,6 +84,23 @@ test("patent content contains four verified records in reverse chronological ord
   assert.equal(content.patents[1].applicationNumber, "202411778024.X");
 });
 
+test("teaching content includes the verified ECE371 leading TA role", async () => {
+  const content = JSON.parse(await readFile(contentPath, "utf8"));
+
+  assert.deepEqual(content.teaching, [
+    {
+      period: "2024 — Present",
+      role: "Leading Teaching Assistant",
+      course: "ECE371: Neural Network and Deep Learning",
+      term: "Spring 2026",
+      school:
+        "School of Data Science, The Chinese University of Hong Kong, Shenzhen",
+      instructor: "Ruimao Zhang",
+      url: "http://zhangruimao.site/ECE371.html",
+    },
+  ]);
+});
+
 test("approved collections have the expected scope", async () => {
   const content = JSON.parse(await readFile(contentPath, "utf8"));
 
@@ -93,6 +110,7 @@ test("approved collections have the expected scope", async () => {
     content.news[0].text,
     "Our paper on MH-GAT-MAPPO-based adaptive offloading for satellite-terrestrial integrated systems was accepted at FCN 2026.",
   );
+  assert.equal(content.teaching.length, 1);
   assert.equal(content.education.length, 2);
 });
 

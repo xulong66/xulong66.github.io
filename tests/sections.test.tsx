@@ -8,12 +8,13 @@ const navigation = [
   ['News', '#news'],
   ['Publications', '#publications'],
   ['Patents', '#patents'],
+  ['Teaching', '#teaching'],
   ['Education', '#education'],
   ['Contact', '#contact'],
 ] as const;
 
 describe('complete academic homepage', () => {
-  it('connects the primary navigation to all seven approved sections', () => {
+  it('connects the primary navigation to all eight approved sections', () => {
     render(<HomePage />);
 
     const primaryNavigation = screen.getByRole('navigation', {
@@ -114,13 +115,42 @@ describe('complete academic homepage', () => {
     });
   });
 
-  it('places Patents after Selected Publications in the page narrative', () => {
+  it('renders the verified ECE371 teaching role and course link', () => {
+    render(<HomePage />);
+
+    const teaching = screen.getByRole('region', { name: 'Teaching Experience' });
+    expect(
+      within(teaching).getByRole('heading', { name: 'Leading Teaching Assistant' }),
+    ).toBeVisible();
+    expect(
+      within(teaching).getByRole('heading', {
+        name: 'ECE371: Neural Network and Deep Learning',
+      }),
+    ).toBeVisible();
+    expect(within(teaching).getByText('2024 — Present')).toBeVisible();
+    expect(within(teaching).getByText('Spring 2026')).toBeVisible();
+    expect(within(teaching).getByText('Instructor: Ruimao Zhang')).toBeVisible();
+    expect(within(teaching).getByRole('link', { name: /open course website/i })).toHaveAttribute(
+      'href',
+      'http://zhangruimao.site/ECE371.html',
+    );
+  });
+
+  it('orders Publications, Patents, Teaching Experience, and Education in sequence', () => {
     render(<HomePage />);
 
     const publications = screen.getByRole('region', { name: 'Selected Publications' });
     const patents = screen.getByRole('region', { name: 'Patents' });
+    const teaching = screen.getByRole('region', { name: 'Teaching Experience' });
+    const education = screen.getByRole('region', { name: 'Education' });
     expect(
       publications.compareDocumentPosition(patents) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(
+      patents.compareDocumentPosition(teaching) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(
+      teaching.compareDocumentPosition(education) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
   });
 
