@@ -1,0 +1,91 @@
+{
+  "profile": {
+    "name": "Long Xu",
+    "chineseName": "徐龙",
+    "role": "Ph.D. Candidate",
+    "descriptor": "Edge Intelligence & Wireless Systems",
+    "affiliation": "Sun Yat-sen University",
+    "school": "School of Electronics and Communication Engineering",
+    "location": "Shenzhen, China",
+    "email": "xulongbao6@gmail.com",
+    "bio": [
+      "I am a Ph.D. candidate at the School of Electronics and Communication Engineering, Sun Yat-sen University. My research explores intelligent computation offloading and resource allocation for edge and vehicular networks.",
+      "I am particularly interested in multi-agent reinforcement learning methods that help distributed wireless systems make adaptive decisions under dynamic communication and computing conditions."
+    ]
+  },
+  "links": {
+    "email": "mailto:xulongbao6@gmail.com",
+    "scholar": "https://scholar.google.com/citations?user=7kqCdhkAAAAJ&hl=en",
+    "github": "https://github.com/xulong66",
+    "orcid": "https://orcid.org/0009-0002-8075-2589"
+  },
+  "research": [
+    {
+      "title": "Intelligent Edge Computing",
+      "description": "Adaptive computation offloading for latency- and energy-sensitive services across distributed edge resources.",
+      "icon": "network"
+    },
+    {
+      "title": "Multi-Agent Reinforcement Learning",
+      "description": "Cooperative decision-making for joint offloading, spectrum, power, and computing-resource allocation.",
+      "icon": "agents"
+    },
+    {
+      "title": "Vehicular & Wireless Networks",
+      "description": "Resource optimization for dynamic V2X and wireless sensing environments.",
+      "icon": "radio"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026",
+      "text": "Our work on enhanced multi-agent deep reinforcement learning for vehicular task offloading appeared in Digital Communications and Networks."
+    },
+    {
+      "date": "2025",
+      "text": "Our adaptive computation offloading work was presented at IEEE WCNC 2025."
+    },
+    {
+      "date": "2025",
+      "text": "Our work on hierarchical target detection and tracking in underwater wireless sensor networks appeared in Digital Communications and Networks."
+    }
+  ],
+  "publications": [
+    {
+      "title": "Enhanced multi-agent deep reinforcement learning for efficient task offloading and resource allocation in vehicular networks",
+      "authors": "Long Xu, Jiale Tan, Hongcheng Zhuang",
+      "venue": "Digital Communications and Networks 12(1), 66–75",
+      "year": 2026,
+      "kind": "Journal",
+      "url": "https://doi.org/10.1016/j.dcan.2025.09.002"
+    },
+    {
+      "title": "Adaptive Computation Offloading Based on Enhanced Multi-Agent Deep Reinforcement Learning",
+      "authors": "Long Xu, Hongcheng Zhuang, Lin Zhang, Gaokun Pang",
+      "venue": "2025 IEEE Wireless Communications and Networking Conference (WCNC), 1–6",
+      "year": 2025,
+      "kind": "Conference",
+      "url": "https://doi.org/10.1109/WCNC61545.2025.10978374"
+    },
+    {
+      "title": "Hierarchical detection and tracking for moving targets in underwater wireless sensor networks",
+      "authors": "Yudong Li, Hongcheng Zhuang, Long Xu, Shengquan Li, Haibo Lu",
+      "venue": "Digital Communications and Networks 11(2), 556–562",
+      "year": 2025,
+      "kind": "Journal",
+      "url": "https://doi.org/10.1016/j.dcan.2024.03.008"
+    }
+  ],
+  "education": [
+    {
+      "period": "2022 — Present",
+      "degree": "Ph.D. Candidate",
+      "school": "School of Electronics and Communication Engineering, Sun Yat-sen University"
+    },
+    {
+      "period": "2022",
+      "degree": "B.S. in Communication Engineering",
+      "school": "Sun Yat-sen University"
+    }
+  ]
+}
