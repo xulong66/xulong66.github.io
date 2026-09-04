@@ -88,6 +88,49 @@
       "url": "https://doi.org/10.1016/j.dcan.2024.03.008"
     }
   ],
+  "patents": [
+    {
+      "title": "Data Transmission Method, Apparatus, and System",
+      "inventors": "Long Xu, Hanyu Ding, Zhaocheng Wang",
+      "assignee": "Honor Device Co., Ltd.",
+      "date": "May 1, 2026",
+      "year": 2026,
+      "status": "Granted Chinese Invention Patent",
+      "number": "CN121368013B",
+      "url": "https://patents.google.com/patent/CN121368013B/en"
+    },
+    {
+      "title": "An Adaptive Computation Offloading Method and Apparatus for Multi-Mode Terminals",
+      "inventors": "Hongcheng Zhuang, Jiale Tan, Long Xu",
+      "assignee": "Sun Yat-sen University",
+      "date": "May 6, 2025",
+      "year": 2025,
+      "status": "Published Chinese Patent Application",
+      "number": "CN119938160A",
+      "applicationNumber": "202411778024.X",
+      "url": "https://patents.google.com/patent/CN119938160A/en"
+    },
+    {
+      "title": "An Adaptive Service Offloading Method, System, Terminal, and Base Station for Mobile Terminals",
+      "inventors": "Hongcheng Zhuang, Long Xu, Jingjing Zhang",
+      "assignee": "Sun Yat-sen University",
+      "date": "April 12, 2024",
+      "year": 2024,
+      "status": "Published Chinese Patent Application",
+      "number": "CN117880887A",
+      "url": "https://patents.google.com/patent/CN117880887A/en"
+    },
+    {
+      "title": "A Communication Device and Method for a Mobile Terminal",
+      "inventors": "Hongcheng Zhuang, Long Xu, Zengping Chen",
+      "assignee": "Sun Yat-sen University",
+      "date": "February 27, 2024",
+      "year": 2024,
+      "status": "Granted Chinese Invention Patent",
+      "number": "CN116209103B",
+      "url": "https://patents.google.com/patent/CN116209103B/en"
+    }
+  ],
   "education": [
     {
       "period": "2022 — Present",

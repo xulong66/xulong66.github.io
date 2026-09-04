@@ -690,12 +690,14 @@ figcaption span {
   line-height: 1.68;
 }
 
-.publication-list {
+.publication-list,
+.patent-list {
   display: grid;
   gap: 0.85rem;
 }
 
-.publication-card {
+.publication-card,
+.patent-card {
   display: grid;
   grid-template-columns: 2.9rem minmax(0, 1fr) auto;
   gap: 1.25rem;
@@ -710,13 +712,15 @@ figcaption span {
     transform 180ms ease;
 }
 
-.publication-card:hover {
+.publication-card:hover,
+.patent-card:hover {
   border-color: color-mix(in srgb, var(--blue) 42%, var(--line));
   box-shadow: 0 14px 36px rgb(26 47 72 / 8%);
   transform: translateY(-2px);
 }
 
-.publication-index {
+.publication-index,
+.patent-index {
   display: grid;
   width: 2.65rem;
   height: 2.65rem;
@@ -726,13 +730,15 @@ figcaption span {
   background: var(--gold-soft);
 }
 
-.publication-meta {
+.publication-meta,
+.patent-meta {
   display: flex;
   align-items: center;
   gap: 0.55rem;
 }
 
-.publication-meta span {
+.publication-meta span,
+.patent-meta span {
   padding: 0.22rem 0.58rem;
   border-radius: 999px;
   color: var(--blue-strong);
@@ -743,13 +749,15 @@ figcaption span {
   text-transform: uppercase;
 }
 
-.publication-meta time {
+.publication-meta time,
+.patent-meta time {
   color: var(--muted);
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.74rem;
 }
 
-.publication-card h3 {
+.publication-card h3,
+.patent-card h3 {
   max-width: 48rem;
   margin: 0.68rem 0 0.55rem;
   color: var(--ink);
@@ -775,7 +783,30 @@ figcaption span {
   font-style: italic;
 }
 
-.paper-link {
+.patent-details {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
+.patent-details p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.28rem 0.75rem;
+  margin: 0;
+}
+
+.patent-details p + p {
+  margin-top: 0.12rem;
+}
+
+.patent-details span {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.paper-link,
+.patent-link {
   display: inline-flex;
   align-items: center;
   gap: 0.28rem;
@@ -787,7 +818,8 @@ figcaption span {
   font-weight: 790;
 }
 
-.paper-link:hover {
+.paper-link:hover,
+.patent-link:hover {
   color: var(--surface-raised);
   background: var(--blue);
 }
@@ -911,7 +943,8 @@ figcaption span {
 
 @media (prefers-color-scheme: dark) {
   .research-card,
-  .publication-card {
+  .publication-card,
+  .patent-card {
     background: rgb(22 34 46 / 78%);
   }
 }
@@ -960,13 +993,15 @@ figcaption span {
     margin-left: 2.8rem;
   }
 
-  .publication-card {
+  .publication-card,
+  .patent-card {
     grid-template-columns: 2.4rem minmax(0, 1fr);
     gap: 0.9rem;
     padding: 1.2rem;
   }
 
-  .paper-link {
+  .paper-link,
+  .patent-link {
     grid-column: 2;
     width: fit-content;
   }
@@ -992,8 +1027,16 @@ figcaption span {
 
   .nav-shell nav {
     width: 100%;
-    justify-content: space-between;
-    gap: 0.2rem;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding: 0.25rem 0.1rem;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+
+  .nav-shell nav::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-link {
@@ -1013,11 +1056,13 @@ figcaption span {
     margin-left: 0;
   }
 
-  .publication-card {
+  .publication-card,
+  .patent-card {
     grid-template-columns: 1fr;
   }
 
-  .paper-link {
+  .paper-link,
+  .patent-link {
     grid-column: 1;
   }
 

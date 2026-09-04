@@ -7,12 +7,13 @@ const navigation = [
   ['Research', '#research'],
   ['News', '#news'],
   ['Publications', '#publications'],
+  ['Patents', '#patents'],
   ['Education', '#education'],
   ['Contact', '#contact'],
 ] as const;
 
 describe('complete academic homepage', () => {
-  it('connects the primary navigation to all six approved sections', () => {
+  it('connects the primary navigation to all seven approved sections', () => {
     render(<HomePage />);
 
     const primaryNavigation = screen.getByRole('navigation', {
@@ -80,6 +81,47 @@ describe('complete academic homepage', () => {
         'DOI',
       );
     }
+  });
+
+  it('renders four verified patent records with Long Xu emphasized', () => {
+    render(<HomePage />);
+
+    const patents = screen.getByRole('region', { name: 'Patents' });
+    const records = within(patents).getAllByRole('article');
+    expect(records).toHaveLength(4);
+
+    const patentLinks = [
+      'https://patents.google.com/patent/CN121368013B/en',
+      'https://patents.google.com/patent/CN119938160A/en',
+      'https://patents.google.com/patent/CN117880887A/en',
+      'https://patents.google.com/patent/CN116209103B/en',
+    ];
+
+    expect(
+      within(records[0]).getByRole('heading', {
+        name: 'Data Transmission Method, Apparatus, and System',
+      }),
+    ).toBeVisible();
+    expect(within(records[0]).getByText('Granted Chinese Invention Patent')).toBeVisible();
+    expect(within(records[1]).getByText('Application No. 202411778024.X')).toBeVisible();
+
+    records.forEach((record, index) => {
+      expect(within(record).getByText('Long Xu').tagName).toBe('STRONG');
+      const patentLink = within(record).getByRole('link', { name: /open patent/i });
+      expect(patentLink).toHaveAttribute('href', patentLinks[index]);
+      expect(patentLink).toHaveAttribute('target', '_blank');
+      expect(patentLink).toHaveAttribute('rel', 'noreferrer');
+    });
+  });
+
+  it('places Patents after Selected Publications in the page narrative', () => {
+    render(<HomePage />);
+
+    const publications = screen.getByRole('region', { name: 'Selected Publications' });
+    const patents = screen.getByRole('region', { name: 'Patents' });
+    expect(
+      publications.compareDocumentPosition(patents) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it('renders education and complete contact destinations', () => {

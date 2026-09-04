@@ -3,6 +3,7 @@ import {
   BookOpen,
   Bot,
   Code2 as Github,
+  FileBadge2,
   GraduationCap,
   Mail,
   MapPin,
@@ -16,6 +17,7 @@ const navigation = [
   ['Research', '#research'],
   ['News', '#news'],
   ['Publications', '#publications'],
+  ['Patents', '#patents'],
   ['Education', '#education'],
   ['Contact', '#contact'],
 ] as const;
@@ -251,11 +253,64 @@ export default function HomePage() {
 
         <section
           className="content-section"
+          id="patents"
+          aria-labelledby="patents-heading"
+        >
+          <SectionHeading
+            index="04"
+            id="patents-heading"
+            title="Patents"
+            note="Selected inventions in wireless communications and edge computing."
+          />
+          <div className="patent-list">
+            {content.patents.map((patent) => (
+              <article className="patent-card" key={patent.number}>
+                <div className="patent-index" aria-hidden="true">
+                  <FileBadge2 size={19} />
+                </div>
+                <div className="patent-body">
+                  <div className="patent-meta">
+                    <span>{patent.status}</span>
+                    <time>{patent.year}</time>
+                  </div>
+                  <h3>{patent.title}</h3>
+                  <p className="authors">
+                    <EmphasizedAuthors authors={patent.inventors} />
+                  </p>
+                  <div className="patent-details">
+                    <p>
+                      <span>{patent.number}</span>
+                      <span>{patent.date}</span>
+                    </p>
+                    <p>
+                      {patent.assignee}
+                      {'applicationNumber' in patent && (
+                        <span>Application No. {patent.applicationNumber}</span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+                <a
+                  className="patent-link"
+                  href={patent.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open patent: ${patent.title}`}
+                >
+                  Patent <ArrowUpRight aria-hidden="true" size={15} />
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="content-section"
           id="education"
           aria-labelledby="education-heading"
         >
           <SectionHeading
-            index="04"
+            index="05"
             id="education-heading"
             title="Education"
             note="Training in communication engineering and intelligent wireless systems."
@@ -280,7 +335,7 @@ export default function HomePage() {
         >
           <div className="contact-copy">
             <p className="contact-index" aria-hidden="true">
-              05
+              06
             </p>
             <h2 id="contact-heading">Contact</h2>
             <h3>Let&apos;s talk about edge intelligence.</h3>

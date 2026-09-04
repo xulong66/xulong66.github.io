@@ -57,6 +57,33 @@ test("publication content includes the accepted FCN 2026 paper first", async () 
   assert.equal(content.publications[0].kind, "Conference · Accepted");
 });
 
+test("patent content contains four verified records in reverse chronological order", async () => {
+  const content = JSON.parse(await readFile(contentPath, "utf8"));
+
+  assert.deepEqual(
+    content.patents.map(({ number, year, status }) => [number, year, status]),
+    [
+      ["CN121368013B", 2026, "Granted Chinese Invention Patent"],
+      ["CN119938160A", 2025, "Published Chinese Patent Application"],
+      ["CN117880887A", 2024, "Published Chinese Patent Application"],
+      ["CN116209103B", 2024, "Granted Chinese Invention Patent"],
+    ],
+  );
+  assert.deepEqual(
+    content.patents.map(({ url }) => url),
+    [
+      "https://patents.google.com/patent/CN121368013B/en",
+      "https://patents.google.com/patent/CN119938160A/en",
+      "https://patents.google.com/patent/CN117880887A/en",
+      "https://patents.google.com/patent/CN116209103B/en",
+    ],
+  );
+  for (const patent of content.patents) {
+    assert.ok(patent.inventors.includes("Long Xu"));
+  }
+  assert.equal(content.patents[1].applicationNumber, "202411778024.X");
+});
+
 test("approved collections have the expected scope", async () => {
   const content = JSON.parse(await readFile(contentPath, "utf8"));
 
