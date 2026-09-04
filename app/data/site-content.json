@@ -38,6 +38,10 @@
   "news": [
     {
       "date": "2026",
+      "text": "Our paper on MH-GAT-MAPPO-based adaptive offloading for satellite-terrestrial integrated systems was accepted at FCN 2026."
+    },
+    {
+      "date": "2026",
       "text": "Our work on enhanced multi-agent deep reinforcement learning for vehicular task offloading appeared in Digital Communications and Networks."
     },
     {
@@ -50,6 +54,15 @@
     }
   ],
   "publications": [
+    {
+      "title": "Adaptive Offloading Based on MH-GAT-MAPPO for Satellite-Terrestrial Integration Systems",
+      "authors": "Jiale Tan, Long Xu, Hongcheng Zhuang",
+      "venue": "2026 International Conference on Future Communications and Networks (FCN): Edge and Cloud Computing Networks",
+      "year": 2026,
+      "kind": "Conference · Accepted",
+      "linkLabel": "FCN 2026",
+      "url": "https://www.future-forum.org.cn/en/fcn2026/About.html"
+    },
     {
       "title": "Enhanced multi-agent deep reinforcement learning for efficient task offloading and resource allocation in vehicular networks",
       "authors": "Long Xu, Jiale Tan, Hongcheng Zhuang",

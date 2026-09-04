@@ -16,13 +16,14 @@ test("profile content contains the approved identity and links", async () => {
   assert.match(content.links.scholar, /7kqCdhkAAAAJ/);
 });
 
-test("publication content contains the three verified works", async () => {
+test("publication content includes the accepted FCN 2026 paper first", async () => {
   const content = JSON.parse(await readFile(contentPath, "utf8"));
 
-  assert.equal(content.publications.length, 3);
+  assert.equal(content.publications.length, 4);
   assert.deepEqual(
     content.publications.map(({ url, year }) => [url, year]),
     [
+      ["https://www.future-forum.org.cn/en/fcn2026/About.html", 2026],
       ["https://doi.org/10.1016/j.dcan.2025.09.002", 2026],
       ["https://doi.org/10.1109/WCNC61545.2025.10978374", 2025],
       ["https://doi.org/10.1016/j.dcan.2024.03.008", 2025],
@@ -31,6 +32,7 @@ test("publication content contains the three verified works", async () => {
   assert.deepEqual(
     content.publications.map(({ title }) => title),
     [
+      "Adaptive Offloading Based on MH-GAT-MAPPO for Satellite-Terrestrial Integration Systems",
       "Enhanced multi-agent deep reinforcement learning for efficient task offloading and resource allocation in vehicular networks",
       "Adaptive Computation Offloading Based on Enhanced Multi-Agent Deep Reinforcement Learning",
       "Hierarchical detection and tracking for moving targets in underwater wireless sensor networks",
@@ -39,6 +41,7 @@ test("publication content contains the three verified works", async () => {
   assert.deepEqual(
     content.publications.map(({ venue }) => venue),
     [
+      "2026 International Conference on Future Communications and Networks (FCN): Edge and Cloud Computing Networks",
       "Digital Communications and Networks 12(1), 66–75",
       "2025 IEEE Wireless Communications and Networking Conference (WCNC), 1–6",
       "Digital Communications and Networks 11(2), 556–562",
@@ -47,13 +50,22 @@ test("publication content contains the three verified works", async () => {
   for (const publication of content.publications) {
     assert.ok(publication.authors.includes("Long Xu"));
   }
+  assert.equal(
+    content.publications[0].authors,
+    "Jiale Tan, Long Xu, Hongcheng Zhuang",
+  );
+  assert.equal(content.publications[0].kind, "Conference · Accepted");
 });
 
 test("approved collections have the expected scope", async () => {
   const content = JSON.parse(await readFile(contentPath, "utf8"));
 
   assert.equal(content.research.length, 3);
-  assert.equal(content.news.length, 3);
+  assert.equal(content.news.length, 4);
+  assert.equal(
+    content.news[0].text,
+    "Our paper on MH-GAT-MAPPO-based adaptive offloading for satellite-terrestrial integrated systems was accepted at FCN 2026.",
+  );
   assert.equal(content.education.length, 2);
 });
 

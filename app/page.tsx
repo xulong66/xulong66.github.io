@@ -241,7 +241,8 @@ export default function HomePage() {
                   rel="noreferrer"
                   aria-label={`Open paper: ${publication.title}`}
                 >
-                  DOI <ArrowUpRight aria-hidden="true" size={15} />
+                  {publication.linkLabel ?? 'DOI'}{' '}
+                  <ArrowUpRight aria-hidden="true" size={15} />
                 </a>
               </article>
             ))}

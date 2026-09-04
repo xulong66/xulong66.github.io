@@ -39,17 +39,21 @@ describe('complete academic homepage', () => {
     expect(within(research).getByRole('heading', { name: 'Vehicular & Wireless Networks' })).toBeVisible();
 
     const news = screen.getByRole('region', { name: 'News' });
-    expect(within(news).getAllByRole('listitem')).toHaveLength(3);
+    expect(within(news).getAllByRole('listitem')).toHaveLength(4);
+    expect(
+      within(news).getByText(/MH-GAT-MAPPO-based adaptive offloading/i),
+    ).toBeVisible();
   });
 
-  it('renders exactly three verified publications with exact DOI links', () => {
+  it('renders the accepted FCN paper first with all verified publication links', () => {
     render(<HomePage />);
 
     const publications = screen.getByRole('region', { name: 'Selected Publications' });
     const papers = within(publications).getAllByRole('article');
-    expect(papers).toHaveLength(3);
+    expect(papers).toHaveLength(4);
 
-    const dois = [
+    const publicationLinks = [
+      'https://www.future-forum.org.cn/en/fcn2026/About.html',
       'https://doi.org/10.1016/j.dcan.2025.09.002',
       'https://doi.org/10.1109/WCNC61545.2025.10978374',
       'https://doi.org/10.1016/j.dcan.2024.03.008',
@@ -57,11 +61,25 @@ describe('complete academic homepage', () => {
 
     papers.forEach((paper, index) => {
       const paperLink = within(paper).getByRole('link', { name: /open paper/i });
-      expect(paperLink).toHaveAttribute('href', dois[index]);
+      expect(paperLink).toHaveAttribute('href', publicationLinks[index]);
       expect(paperLink).toHaveAttribute('target', '_blank');
       expect(paperLink).toHaveAttribute('rel', 'noreferrer');
       expect(within(paper).getByText('Long Xu').tagName).toBe('STRONG');
     });
+    expect(
+      within(papers[0]).getByRole('heading', {
+        name: 'Adaptive Offloading Based on MH-GAT-MAPPO for Satellite-Terrestrial Integration Systems',
+      }),
+    ).toBeVisible();
+    expect(within(papers[0]).getByText('Conference · Accepted')).toBeVisible();
+    expect(
+      within(papers[0]).getByRole('link', { name: /open paper/i }),
+    ).toHaveTextContent('FCN 2026');
+    for (const paper of papers.slice(1)) {
+      expect(within(paper).getByRole('link', { name: /open paper/i })).toHaveTextContent(
+        'DOI',
+      );
+    }
   });
 
   it('renders education and complete contact destinations', () => {
