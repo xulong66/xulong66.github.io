@@ -129,6 +129,7 @@ describe('complete academic homepage', () => {
     ).toBeVisible();
     expect(within(teaching).getByText('2024 — Present')).toBeVisible();
     expect(within(teaching).getByText('Spring 2026')).toBeVisible();
+    expect(within(teaching).getByText('Sun Yat-sen University')).toBeVisible();
     expect(within(teaching).getByText('Instructor: Ruimao Zhang')).toBeVisible();
     expect(within(teaching).getByRole('link', { name: /open course website/i })).toHaveAttribute(
       'href',

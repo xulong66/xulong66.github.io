@@ -12,6 +12,10 @@ test("profile content contains the approved identity and links", async () => {
   assert.equal(content.profile.email, "xulongbao6@gmail.com");
   assert.equal(content.profile.affiliation, "Sun Yat-sen University");
   assert.equal(content.links.github, "https://github.com/xulong66");
+  assert.equal(
+    content.links.supervisor,
+    "https://sece.sysu.edu.cn/szll/js/rztx/1399313.htm",
+  );
   assert.equal(content.links.orcid, "https://orcid.org/0009-0002-8075-2589");
   assert.match(content.links.scholar, /7kqCdhkAAAAJ/);
 });
@@ -93,8 +97,7 @@ test("teaching content includes the verified ECE371 leading TA role", async () =
       role: "Leading Teaching Assistant",
       course: "ECE371: Neural Network and Deep Learning",
       term: "Spring 2026",
-      school:
-        "School of Data Science, The Chinese University of Hong Kong, Shenzhen",
+      school: "Sun Yat-sen University",
       instructor: "Ruimao Zhang",
       url: "http://zhangruimao.site/ECE371.html",
     },

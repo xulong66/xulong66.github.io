@@ -36,6 +36,10 @@ describe('academic homepage hero', () => {
       'href',
       'https://github.com/xulong66',
     );
+    expect(within(about).getByRole('link', { name: /supervisor/i })).toHaveAttribute(
+      'href',
+      'https://sece.sysu.edu.cn/szll/js/rztx/1399313.htm',
+    );
   });
 
   it('uses the approved local Scholar portrait with descriptive text', () => {
