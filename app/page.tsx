@@ -10,6 +10,7 @@ import {
   Network,
   Presentation,
   Radio,
+  UserRound,
 } from 'lucide-react';
 import content from './data/site-content.json';
 
@@ -28,6 +29,7 @@ const profileLinks = [
   { label: 'Email', href: content.links.email, icon: Mail },
   { label: 'Google Scholar', href: content.links.scholar, icon: GraduationCap },
   { label: 'GitHub', href: content.links.github, icon: Github },
+  { label: 'Supervisor', href: content.links.supervisor, icon: UserRound },
 ];
 
 const researchIcons = {
