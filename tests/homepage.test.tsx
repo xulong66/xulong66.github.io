@@ -42,12 +42,12 @@ describe('academic homepage hero', () => {
     );
   });
 
-  it('uses the approved local Scholar portrait with descriptive text', () => {
+  it('uses the approved front-facing portrait with descriptive text', () => {
     render(<HomePage />);
 
     expect(screen.getByRole('img', { name: /portrait of long xu/i })).toHaveAttribute(
       'src',
-      '/long-xu.jpg',
+      '/long-xu-portrait.png',
     );
   });
 });

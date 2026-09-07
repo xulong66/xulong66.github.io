@@ -147,9 +147,9 @@ export default function HomePage() {
 
           <figure className="portrait-wrap">
             <div className="portrait-frame">
-              {/* oxlint-disable-next-line next/no-img-element -- Local Scholar portrait uses a deliberate square crop. */}
+              {/* oxlint-disable-next-line next/no-img-element -- Local portrait uses a deliberate square crop. */}
               <img
-                src="/long-xu.jpg"
+                src="/long-xu-portrait.png"
                 alt="Portrait of Long Xu"
                 width="360"
                 height="360"
