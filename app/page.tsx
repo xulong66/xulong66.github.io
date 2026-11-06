@@ -12,6 +12,8 @@ import {
   Radio,
   UserRound,
 } from 'lucide-react';
+import { EdgeSignalField } from './components/edge-signal-field';
+import { ResearchMilestones } from './components/research-milestones';
 import content from './data/site-content.json';
 
 const navigation = [
@@ -101,15 +103,10 @@ export default function HomePage() {
 
       <main className="page-shell">
         <section className="hero" id="about" aria-labelledby="profile-name">
-          <div className="signal-field" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-            <span />
-          </div>
+          <EdgeSignalField />
 
           <div className="hero-copy">
-            <p className="eyebrow">{profile.descriptor}</p>
+            <p className="eyebrow">AI + {profile.descriptor}</p>
             <h1 id="profile-name">{profile.name}</h1>
 
             <p className="role">{profile.role}</p>
@@ -200,16 +197,9 @@ export default function HomePage() {
             index="02"
             id="news-heading"
             title="News"
-            note="Recent research milestones."
+            note="Research milestones across publications and patents."
           />
-          <ol className="news-list">
-            {content.news.map((item, index) => (
-              <li key={`${item.date}-${index}`}>
-                <time>{item.date}</time>
-                <p>{item.text}</p>
-              </li>
-            ))}
-          </ol>
+          <ResearchMilestones />
         </section>
 
         <section

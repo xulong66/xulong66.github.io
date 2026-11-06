@@ -39,19 +39,23 @@
   "news": [
     {
       "date": "2026",
-      "text": "Our paper on MH-GAT-MAPPO-based adaptive offloading for satellite-terrestrial integrated systems was accepted at FCN 2026."
+      "text": "Our paper on MH-GAT-MAPPO-based adaptive offloading for satellite-terrestrial integrated systems was accepted at FCN 2026.",
+      "publicationUrl": "https://www.future-forum.org.cn/en/fcn2026/About.html"
     },
     {
       "date": "2026",
-      "text": "Our work on enhanced multi-agent deep reinforcement learning for vehicular task offloading appeared in Digital Communications and Networks."
+      "text": "Our work on enhanced multi-agent deep reinforcement learning for vehicular task offloading appeared in Digital Communications and Networks.",
+      "publicationUrl": "https://doi.org/10.1016/j.dcan.2025.09.002"
     },
     {
       "date": "2025",
-      "text": "Our adaptive computation offloading work was presented at IEEE WCNC 2025."
+      "text": "Our adaptive computation offloading work was presented at IEEE WCNC 2025.",
+      "publicationUrl": "https://doi.org/10.1109/WCNC61545.2025.10978374"
     },
     {
       "date": "2025",
-      "text": "Our work on hierarchical target detection and tracking in underwater wireless sensor networks appeared in Digital Communications and Networks."
+      "text": "Our work on hierarchical target detection and tracking in underwater wireless sensor networks appeared in Digital Communications and Networks.",
+      "publicationUrl": "https://doi.org/10.1016/j.dcan.2024.03.008"
     }
   ],
   "publications": [

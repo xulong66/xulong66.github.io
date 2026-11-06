@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import HomePage from '../app/page';
 
@@ -41,10 +41,42 @@ describe('complete academic homepage', () => {
     expect(within(research).getByRole('heading', { name: 'Vehicular & Wireless Networks' })).toBeVisible();
 
     const news = screen.getByRole('region', { name: 'News' });
-    expect(within(news).getAllByRole('listitem')).toHaveLength(4);
-    expect(
-      within(news).getByText(/MH-GAT-MAPPO-based adaptive offloading/i),
-    ).toBeVisible();
+    const milestones = within(news).getByRole('list', { name: 'Milestones by year' });
+    expect(within(milestones).getAllByRole('button')).toHaveLength(8);
+    expect(within(news).getByText(/was accepted at FCN 2026/i)).toBeVisible();
+    expect(within(news).getByRole('link', { name: 'FCN 2026 conference' })).toHaveAttribute(
+      'href',
+      'https://www.future-forum.org.cn/en/fcn2026/About.html',
+    );
+
+    fireEvent.click(within(news).getByRole('button', { name: 'Publications' }));
+    expect(within(milestones).getAllByRole('button')).toHaveLength(4);
+    const conference = within(milestones).getByRole('button', { name: /adaptive computation offloading/i });
+    fireEvent.click(conference);
+    expect(conference).toHaveAttribute('aria-pressed', 'true');
+    expect(within(news).getByText(/was presented at IEEE WCNC 2025/i)).toBeVisible();
+    expect(within(news).getByRole('link', { name: 'Read via DOI' })).toHaveAttribute(
+      'href',
+      'https://doi.org/10.1109/WCNC61545.2025.10978374',
+    );
+
+    const patentsFilter = within(news).getByRole('button', { name: 'Patents' });
+    fireEvent.click(patentsFilter);
+    expect(patentsFilter).toHaveAttribute('aria-pressed', 'true');
+    expect(within(milestones).getAllByRole('button')).toHaveLength(4);
+    expect(within(news).getByRole('link', { name: 'View patent record' })).toHaveAttribute(
+      'href',
+      'https://patents.google.com/patent/CN121368013B/en',
+    );
+
+    const application = within(milestones).getByRole('button', { name: /offloading for multi-mode terminals/i });
+    fireEvent.click(application);
+    fireEvent.click(within(news).getByRole('button', { name: 'All' }));
+    expect(application).toHaveAttribute('aria-pressed', 'true');
+    expect(within(news).getByRole('link', { name: 'View application record' })).toHaveAttribute(
+      'href',
+      'https://patents.google.com/patent/CN119938160A/en',
+    );
   });
 
   it('renders the accepted FCN paper first with all verified publication links', () => {

@@ -1,0 +1,136 @@
+.field {
+  position: absolute;
+  z-index: -1;
+  inset-block-start: 50%;
+  inset-inline-end: 0;
+  width: min(56%, 35.5rem);
+  color: var(--blue);
+  pointer-events: none;
+  transform: translateY(-50%);
+  background: radial-gradient(
+    ellipse at 66% 47%,
+    color-mix(in srgb, var(--blue) 12%, transparent),
+    transparent 68%
+  );
+}
+
+.field svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.guide,
+.trace,
+.packets {
+  fill: none;
+  stroke: currentColor;
+}
+
+.guide {
+  opacity: 0.2;
+  stroke-dasharray: 2 6;
+}
+
+.trace {
+  opacity: 0.46;
+  stroke-width: 1.2;
+}
+
+.packets {
+  display: none;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 5 105;
+}
+
+.terminal {
+  fill: var(--surface);
+  stroke: currentColor;
+  stroke-opacity: 0.45;
+}
+
+.node {
+  fill: currentColor;
+  opacity: 0.68;
+}
+
+.chip {
+  fill: var(--surface);
+  stroke: currentColor;
+  stroke-opacity: 0.68;
+  stroke-width: 1.25;
+}
+
+.chip > rect:nth-child(2) {
+  fill: var(--blue-soft);
+}
+
+.core {
+  fill: var(--gold);
+  stroke: none;
+}
+
+.labels {
+  fill: var(--blue-strong);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.hubLabel {
+  font-size: 10px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .packets {
+    display: initial;
+  }
+
+  .packets path {
+    animation: transmit 2.2s linear 2 both;
+  }
+
+  .packets path:nth-child(2) {
+    animation-delay: 0.24s;
+  }
+
+  .packets path:nth-child(3) {
+    animation-delay: 0.45s;
+  }
+
+  @keyframes transmit {
+    0% {
+      stroke-dashoffset: 5;
+      opacity: 0;
+    }
+
+    12%,
+    58% {
+      opacity: 1;
+    }
+
+    70%,
+    100% {
+      stroke-dashoffset: -104;
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .field {
+    inset-block-start: min(36vw, 145px);
+    inset-inline-end: 50%;
+    width: min(116%, 27rem);
+    opacity: 0.72;
+    transform: translate(50%, -50%);
+  }
+
+  .chip,
+  .labels {
+    display: none;
+  }
+}
