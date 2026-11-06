@@ -139,12 +139,16 @@ export function EdgeSignalField() {
             }}
             onPointerLeave={() => setHovered(null)}
             onFocus={(event) => {
-              if (event.currentTarget.matches(':focus-visible')) setFocused(id);
+              if (event.currentTarget.matches(':focus-visible')) {
+                setHovered(null);
+                setFocused(id);
+              }
             }}
             onBlur={() => setFocused(null)}
-            onClick={() =>
-              setPinned((previous) => (previous === id ? null : id))
-            }
+            onClick={(event) => {
+              if (event.detail === 0) setHovered(null);
+              setPinned((previous) => (previous === id ? null : id));
+            }}
             onKeyDown={(event) => {
               if (event.key !== 'Escape') return;
               setHovered(null);

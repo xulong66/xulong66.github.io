@@ -73,5 +73,10 @@ describe('academic homepage hero', () => {
     fireEvent.keyDown(edge, { key: 'Escape' });
     expect(edge).toHaveAttribute('aria-pressed', 'false');
     expect(diagram.querySelectorAll('path[data-active="true"]')).toHaveLength(0);
+
+    fireEvent.pointerEnter(sensors, { pointerType: 'mouse' });
+    fireEvent.click(edge, { detail: 0 });
+    expect(edge).toHaveAttribute('aria-pressed', 'true');
+    expect(detail).toHaveTextContent('Processes incoming data near its source');
   });
 });
