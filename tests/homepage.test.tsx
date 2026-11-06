@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import HomePage from '../app/page';
 
@@ -49,5 +49,29 @@ describe('academic homepage hero', () => {
       'src',
       '/long-xu-portrait.png',
     );
+  });
+
+  it('previews a single signal path and restores the pinned edge node when the pointer leaves', () => {
+    render(<HomePage />);
+    const diagram = screen.getByRole('region', { name: 'Edge AI signal paths' });
+    const controls = within(diagram);
+    const sensors = controls.getByRole('button', { name: 'Sensors' });
+    const edge = controls.getByRole('button', { name: 'Edge AI' });
+    const detail = controls.getByRole('status');
+
+    fireEvent.click(edge);
+    expect(edge).toHaveAttribute('aria-pressed', 'true');
+    expect(diagram.querySelectorAll('path[data-active="true"]')).toHaveLength(3);
+    expect(detail).toHaveTextContent('Processes incoming data near its source');
+
+    fireEvent.pointerEnter(sensors, { pointerType: 'mouse' });
+    expect(diagram.querySelectorAll('path[data-active="true"]')).toHaveLength(1);
+    expect(detail).toHaveTextContent('Capture signals from the physical world');
+
+    fireEvent.pointerLeave(sensors, { pointerType: 'mouse' });
+    expect(detail).toHaveTextContent('Processes incoming data near its source');
+    fireEvent.keyDown(edge, { key: 'Escape' });
+    expect(edge).toHaveAttribute('aria-pressed', 'false');
+    expect(diagram.querySelectorAll('path[data-active="true"]')).toHaveLength(0);
   });
 });

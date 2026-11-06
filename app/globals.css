@@ -76,7 +76,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: min(320px, 100%);
   min-height: 100vh;
   margin: 0;
   color: var(--ink);
@@ -190,7 +190,7 @@ a:focus-visible {
 }
 
 .page-shell {
-  padding-block: clamp(3.5rem, 8vw, 7.25rem);
+  padding-block: clamp(2.75rem, 5.75vw, 5rem) clamp(3.5rem, 8vw, 7.25rem);
 }
 
 .hero {
@@ -198,13 +198,18 @@ a:focus-visible {
   isolation: isolate;
   overflow: clip;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 330px);
-  gap: clamp(3rem, 8vw, 7.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 420px);
+  grid-template-areas:
+    'profile portrait'
+    'profile signal';
+  gap: 1.15rem clamp(2rem, 5vw, 5rem);
   align-items: center;
+  align-content: center;
   min-height: calc(100vh - 13.5rem);
 }
 
 .hero-copy {
+  grid-area: profile;
   position: relative;
   z-index: 2;
   max-width: 720px;
@@ -325,11 +330,15 @@ h1 span {
 }
 
 .portrait-wrap {
+  grid-area: portrait;
   position: relative;
   z-index: 2;
-  width: min(100%, 330px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: end;
+  width: min(100%, 26rem);
   margin: 0;
-  justify-self: end;
 }
 
 .portrait-frame {
@@ -362,14 +371,14 @@ h1 span {
   object-position: center top;
 }
 
-figcaption {
-  margin: 1.55rem 0 0 0.45rem;
+.portrait-wrap figcaption {
+  margin: 0 0 0.35rem;
   color: var(--muted);
   font-size: 0.75rem;
   line-height: 1.5;
 }
 
-figcaption span {
+.portrait-wrap figcaption span {
   display: block;
   margin-bottom: 0.25rem;
   color: var(--gold);
@@ -390,18 +399,25 @@ figcaption span {
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-areas:
+      'portrait'
+      'profile'
+      'signal';
+    gap: 2.25rem;
     min-height: auto;
   }
 
   .portrait-wrap {
-    grid-row: 1;
+    display: block;
     width: min(72vw, 290px);
     justify-self: center;
   }
 
+  .portrait-wrap figcaption {
+    margin: 1.55rem 0 0 0.45rem;
+  }
+
   .hero-copy {
-    grid-row: 2;
     text-align: center;
   }
 

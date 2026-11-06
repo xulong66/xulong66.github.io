@@ -1,46 +1,99 @@
 .field {
-  position: absolute;
-  z-index: -1;
-  inset-block-start: 50%;
-  inset-inline-end: 0;
-  width: min(56%, 35.5rem);
-  color: var(--blue);
-  pointer-events: none;
-  transform: translateY(-50%);
-  background: radial-gradient(
-    ellipse at 66% 47%,
-    color-mix(in srgb, var(--blue) 12%, transparent),
-    transparent 68%
-  );
+  grid-area: signal;
+  width: min(100%, 26rem);
+  min-width: 0;
+  padding: clamp(0.65rem, 2vw, 1rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background:
+    radial-gradient(
+      ellipse at 83% 8%,
+      color-mix(in srgb, var(--blue) 10%, transparent),
+      transparent 67%
+    ),
+    var(--surface);
 }
 
-.field svg {
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.2rem 0.8rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--gold);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.diagram {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 29rem);
+  aspect-ratio: 440 / 192;
+  margin: 0.6rem auto 0.3rem;
+  color: var(--blue);
+}
+
+.diagram svg {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  pointer-events: none;
 }
 
 .guide,
-.trace,
+.route,
 .packets {
   fill: none;
   stroke: currentColor;
 }
 
 .guide {
-  opacity: 0.2;
-  stroke-dasharray: 2 6;
+  opacity: 0.23;
+  stroke-dasharray: 2 5;
 }
 
-.trace {
-  opacity: 0.46;
-  stroke-width: 1.2;
+.route {
+  opacity: 0.56;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.diagram[data-highlighted='true'] .route[data-active='false'] {
+  opacity: 0.21;
+}
+
+.route[data-active='true'] {
+  opacity: 1;
+  stroke: var(--gold);
+  stroke-width: 2.1;
 }
 
 .packets {
   display: none;
-  stroke: var(--gold);
-  stroke-width: 2.5;
+  stroke: var(--blue-strong);
+  stroke-width: 3.25;
   stroke-linecap: round;
   stroke-dasharray: 5 105;
 }
@@ -48,18 +101,17 @@
 .terminal {
   fill: var(--surface);
   stroke: currentColor;
-  stroke-opacity: 0.45;
+  stroke-opacity: 0.68;
 }
 
 .node {
   fill: currentColor;
-  opacity: 0.68;
 }
 
 .chip {
   fill: var(--surface);
   stroke: currentColor;
-  stroke-opacity: 0.68;
+  stroke-opacity: 0.72;
   stroke-width: 1.25;
 }
 
@@ -72,16 +124,94 @@
   stroke: none;
 }
 
-.labels {
-  fill: var(--blue-strong);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+.control {
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--blue-strong);
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transform: translate(-50%, -50%);
 }
 
-.hubLabel {
-  font-size: 10px;
+.control::before {
+  position: absolute;
+  inset: 0.53rem;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+}
+
+.control[data-active='true'] {
+  color: var(--gold);
+}
+
+.control[data-active='true']::before {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 14%, transparent);
+}
+
+.control[aria-pressed='true']::before {
+  border-width: 2px;
+  border-color: var(--gold);
+}
+
+.control:focus-visible {
+  z-index: 1;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.nodeLabel {
+  position: absolute;
+  inset-block-start: calc(50% + 0.83rem);
+  left: 50%;
+  font-size: 0.68rem;
+  font-weight: 680;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.hubControl {
+  border-radius: 0.65rem;
+}
+
+.hubControl::before {
+  inset: -0.125rem;
+}
+
+.hubControl .nodeLabel {
+  inset-block-start: calc(50% + 1.55rem);
+}
+
+.detail {
+  display: block;
+  min-block-size: 5.35rem;
+  padding-block-start: 0.65rem;
+  border-block-start: 1px solid var(--line);
+}
+
+.detailTitle {
+  display: block;
+  margin: 0 0 0.25rem;
+  color: var(--blue-strong);
+  font-size: 0.82rem;
+  font-weight: 710;
+  line-height: 1.3;
+}
+
+.detailCopy {
+  display: block;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -90,15 +220,23 @@
   }
 
   .packets path {
-    animation: transmit 2.2s linear 2 both;
+    animation: transmit 0.9s linear both;
   }
 
-  .packets path:nth-child(2) {
-    animation-delay: 0.24s;
+  .packets[data-idle='true'] path {
+    animation-duration: 2.3s;
   }
 
-  .packets path:nth-child(3) {
-    animation-delay: 0.45s;
+  .packets[data-idle='true'] path:nth-child(2) {
+    animation-delay: 0.17s;
+  }
+
+  .packets[data-idle='true'] path:nth-child(3) {
+    animation-delay: 0.34s;
+  }
+
+  .diagram[data-highlighted='true'] .packets[data-idle='true'] {
+    visibility: hidden;
   }
 
   @keyframes transmit {
@@ -108,11 +246,10 @@
     }
 
     12%,
-    58% {
+    85% {
       opacity: 1;
     }
 
-    70%,
     100% {
       stroke-dashoffset: -104;
       opacity: 0;
@@ -122,15 +259,12 @@
 
 @media (max-width: 800px) {
   .field {
-    inset-block-start: min(36vw, 145px);
-    inset-inline-end: 50%;
-    width: min(116%, 27rem);
-    opacity: 0.72;
-    transform: translate(50%, -50%);
+    width: 100%;
   }
+}
 
-  .chip,
-  .labels {
-    display: none;
+@media (max-width: 480px) {
+  .detail {
+    min-block-size: 6rem;
   }
 }

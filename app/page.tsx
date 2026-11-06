@@ -103,8 +103,6 @@ export default function HomePage() {
 
       <main className="page-shell">
         <section className="hero" id="about" aria-labelledby="profile-name">
-          <EdgeSignalField />
-
           <div className="hero-copy">
             <p className="eyebrow">AI + {profile.descriptor}</p>
             <h1 id="profile-name">{profile.name}</h1>
@@ -157,6 +155,7 @@ export default function HomePage() {
               Edge intelligence for connected systems
             </figcaption>
           </figure>
+          <EdgeSignalField />
         </section>
 
         <section
